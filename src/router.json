@@ -1,0 +1,210 @@
+{
+  "configure":{
+    "connect": "mongodb://127.0.0.1:27017/cms",
+    "authenticate": false,
+    "acl": {
+      "default": "Visitor",
+      "rol":["Admin", "Moderator", "Visitor"]
+    },
+    "jwt":{
+      "secret": "bottom",
+      "day": "5"
+    }
+  },
+  "routes":[
+    {
+      "route": "MENU",
+      "controller":{
+        "name": "MENU",
+        "method": [
+          {
+            "name": "GET",
+            "feature": "allMenu",
+            "auth": true,
+            "acl": ["Admin", "Moderator", "Visitor"]
+          },
+          {
+            "name": "POST",
+            "feature": "createMenu",
+            "auth": false,
+            "acl": ["Admin"]
+          },
+          {
+            "name": "PUT",
+            "feature": "updateMenu",
+            "auth": false,
+            "acl": ["Admin"]
+          },
+          {
+            "name": "DELETE",
+            "feature": "deleteMenu",
+            "auth": false,
+            "acl": ["Admin"]
+          }
+        ]
+      }
+    },
+    {
+      "route": "PAGE",
+      "controller":{
+        "name": "PAGE",
+        "method": [
+          {
+            "name": "GET",
+            "feature": "allPage",
+            "auth": true,
+            "acl": ["Admin", "Moderator", "Visitor"]
+          },
+          {
+            "name": "POST",
+            "feature": "createPage",
+            "auth": false,
+            "acl": ["Admin"]
+          },
+          {
+            "name": "PUT",
+            "feature": "updatePage",
+            "auth": false,
+            "acl": ["Admin"]
+          },
+          {
+            "name": "DELETE",
+            "feature": "deletePage",
+            "auth": true,
+            "acl": ["Admin"]
+          }
+        ]
+      }
+    },
+    {
+      "route": "BLOG",
+      "controller":{
+        "name": "BLOG",
+        "method": [
+          {
+            "name": "GET",
+            "feature": "allBlog",
+            "auth": true,
+            "acl": ["Admin", "Moderator", "Visitor"]
+          },
+          {
+            "name": "POST",
+            "feature": "createBlog",
+            "auth": false,
+            "acl": ["Admin", "Moderator"]
+          },
+          {
+            "name": "PUT",
+            "feature": "updateBlog",
+            "auth": false,
+            "acl": ["Admin", "Moderator"]
+          },
+          {
+            "name": "DELETE",
+            "feature": "deleteBlog",
+            "auth": true,
+            "acl": ["Admin", "Moderator"]
+          }
+        ]
+      }
+    },
+    {
+      "route": "POST",
+      "controller":{
+        "name": "POST",
+        "method": [
+          {
+            "name": "GET",
+            "feature": "allPost",
+            "auth": true,
+            "acl": ["Admin", "Moderator", "Visitor"]
+          },
+          {
+            "name": "POST",
+            "feature": "createPost",
+            "auth": false,
+            "acl": ["Admin", "Moderator"]
+          },
+          {
+            "name": "PUT",
+            "feature": "updatePost",
+            "auth": false,
+            "acl": ["Admin", "Moderator"]
+          },
+          {
+            "name": "DELETE",
+            "feature": "deletePost",
+            "auth": true,
+            "acl": ["Admin", "Moderator"]
+          }
+        ]
+      }
+    },
+    {
+      "route": "LOGIN",
+      "controller":{
+        "name": "LOGIN",
+        "method": [
+          {
+            "name": "POST",
+            "feature": "login",
+            "auth": false,
+            "acl": ["Admin"]
+          }
+        ]
+      }
+    },
+    {
+      "route": "ACCOUNT",
+      "controller":{
+        "name": "ACCOUNT",
+        "method": [
+          {
+            "name": "GET",
+            "feature": "listAccounts",
+            "auth": true,
+            "acl": ["Admin"]
+          },
+          {
+            "name": "POST",
+            "feature": "createAccount",
+            "auth": false,
+            "acl": ["Admin"]
+          },
+          {
+            "name": "PUT",
+            "feature": "updateAccount",
+            "auth": false,
+            "acl": ["Admin"]
+          },
+          {
+            "name": "DELETE",
+            "feature": "deleteAccount",
+            "auth": false,
+            "acl": ["Admin"]
+          }
+        ]
+      }
+    },
+    {
+      "route": "BACKUP",
+      "controller":{
+        "name": "BACKUP",
+        "method": [
+          {
+            "name": "GET",
+            "feature": "exportDB",
+            "auth": true,
+            "acl": ["Admin"]
+          },
+          {
+            "name": "PUT",
+            "feature": "importDB",
+            "auth": true,
+            "acl": ["Admin"]
+          }
+        ]
+      }
+    }
+  ]
+}
